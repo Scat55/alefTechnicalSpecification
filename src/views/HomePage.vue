@@ -1,7 +1,7 @@
 <script setup>
 import TheHeader from '../components/TheHeader.vue';
 import PersonForm from '../components/PersonForm.vue';
-import ChildrenForm from '../components/ChildrenForm.vue';
+
 </script>
 
 <template>
@@ -9,13 +9,37 @@ import ChildrenForm from '../components/ChildrenForm.vue';
     <header>
       <TheHeader />
     </header>
-    <main>
+    <main class="main">
       <PersonForm />
-      <ChildrenForm />
     </main>
+
+    <footer class='footer'>
+      <p class="footer__text">all rights reserved</p>
+    </footer>
   </div>
 </template>
 
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  flex: 0;
+  padding: 1.875rem 0 1.875rem 0;
+  background-color: #fafafa;
+
+  &__text {
+    text-align: center;
+
+  }
+}
+</style>
