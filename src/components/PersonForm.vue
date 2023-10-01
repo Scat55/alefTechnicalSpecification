@@ -1,7 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { usePersonStore } from '../stores/personStore';
+import { useRouter } from 'vue-router';
+
 
 const chiled = usePersonStore()
+
+const personName = ref('');
+const personAge = ref(null);
+
+const chiledName = ref('');
+const chiledAge = ref(null);
+
+const router = useRouter();
 
 const addedChildren = () => {
   chiled.children.push({ name: '', age: null })
@@ -12,7 +23,15 @@ const removeChiled = () => {
 }
 
 const handler = () => {
-  alert(chiled.children.name)
+  chiled.personName = personName.value
+  chiled.personAge = personAge.value
+
+  chiled.children.name = chiledName.value
+  chiled.children.age = chiledAge.value
+
+  console.log(chiled.children[0].name)
+
+  // router.push('/preview')
 }
 </script>
 
@@ -34,13 +53,17 @@ const handler = () => {
           <input
             type="text"
             class="personForm__form-input"
+            v-model="personName"
           >
+
         </div>
+
         <div class="personForm__form-person age">
           <span class="personForm__form-label">Возраст</span>
           <input
             type="text"
             class="personForm__form-input"
+            v-model="personAge"
           >
         </div>
         <!-- Форма ребенка -->
@@ -65,14 +88,12 @@ const handler = () => {
           class="chiled-one"
           v-for="chiled in chiled.children"
         >
-          <div class="
-        childrenForm__form-person
-        name">
+          <div class="childrenForm__form-person name">
             <span class="childrenForm__form-label">Имя</span>
             <input
               type="text"
               class="childrenForm__form-input"
-              v-model="chiled.name"
+              v-model="chiledName"
             >
           </div>
           <div class="childrenForm__form-person age">
@@ -80,7 +101,7 @@ const handler = () => {
             <input
               type="text"
               class="childrenForm__form-input"
-              v-model="chiled.age"
+              v-model="chiledAge"
             >
           </div>
           <span
