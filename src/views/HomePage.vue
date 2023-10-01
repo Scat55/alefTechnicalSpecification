@@ -1,6 +1,7 @@
 <script setup>
 import TheHeader from '../components/TheHeader.vue';
-import personForm from '../components/PersonForm.vue';
+import PersonForm from '../components/PersonForm.vue';
+import ChildrenForm from '../components/ChildrenForm.vue';
 </script>
 
 <template>
@@ -9,7 +10,8 @@ import personForm from '../components/PersonForm.vue';
       <TheHeader />
     </header>
     <main>
-      <personForm />
+      <PersonForm />
+      <ChildrenForm />
     </main>
   </div>
 </template>

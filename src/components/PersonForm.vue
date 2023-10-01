@@ -21,7 +21,7 @@
           >
         </div>
         <div class="personForm__form-person age">
-          <span class="personForm__form-label">Возрвст</span>
+          <span class="personForm__form-label">Возраст</span>
           <input
             type="text"
             class="personForm__form-input"
