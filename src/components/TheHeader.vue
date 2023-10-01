@@ -33,7 +33,7 @@ import { RouterLink } from 'vue-router';
 .header {
   margin-top: 1.375rem;
   padding-bottom: 1.375rem;
-  border-bottom: 1px solid $greyColor;
+  border-bottom: 1px solid #f1f1f1;
 
   &__logo {
     display: flex;

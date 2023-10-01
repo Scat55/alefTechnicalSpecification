@@ -1,5 +1,6 @@
 <script setup>
 import TheHeader from '../components/TheHeader.vue';
+import personForm from '../components/PersonForm.vue';
 </script>
 
 <template>
@@ -7,6 +8,9 @@ import TheHeader from '../components/TheHeader.vue';
     <header>
       <TheHeader />
     </header>
+    <main>
+      <personForm />
+    </main>
   </div>
 </template>
 
