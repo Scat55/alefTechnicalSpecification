@@ -1,4 +1,15 @@
 <script setup>
+import { usePersonStore } from '../stores/personStore';
+
+const chiled = usePersonStore()
+
+const addedChildren = () => {
+  chiled.children.push({ name: '', age: null })
+}
+
+const removeChiled = () => {
+  chiled.children.pop({})
+}
 
 </script>
 
@@ -9,7 +20,11 @@
         <p class="childrenForm__title">
           Дети (макс.5)
         </p>
-        <button class="childrenForm__btn">
+        <button
+          class="childrenForm__btn"
+          @click="addedChildren()"
+          v-if="chiled.children.length !== 5"
+        >
           <img
             src="../assets/images/plus.svg"
             alt="Plus"
@@ -17,28 +32,38 @@
           <span>Добавить ребенка</span>
         </button>
       </div>
-
-
       <form
         action="#"
         class="childrenForm__form"
       >
-        <div class="childrenForm__form-person name">
-          <span class="childrenForm__form-label">Имя</span>
-          <input
-            type="text"
-            class="childrenForm__form-input"
-          >
+        <div
+          class="chiled-one"
+          v-for="chiled in chiled.children"
+        >
+          <div class="
+        childrenForm__form-person
+        name">
+            <span class="childrenForm__form-label">Имя</span>
+            <input
+              type="text"
+              class="childrenForm__form-input"
+              v-model="chiled.name"
+            >
+          </div>
+          <div class="childrenForm__form-person age">
+            <span class="childrenForm__form-label">Возраст</span>
+            <input
+              type="text"
+              class="childrenForm__form-input"
+              v-model="chiled.age"
+            >
+          </div>
+          <span
+            class="childrenForm__form-delete"
+            @click="removeChiled()"
+          >Удалить</span>
         </div>
-        <div class="childrenForm__form-person age">
-          <span class="childrenForm__form-label">Возраст</span>
-          <input
-            type="text"
-            class="childrenForm__form-input"
-          >
 
-        </div>
-        <span class="childrenForm__form-delete">Удалить</span>
       </form>
     </div>
   </div>
@@ -92,9 +117,9 @@
   }
 
   &__form {
-    display: flex;
-    gap: 1.125rem;
-    align-items: center;
+    // display: flex;
+    // gap: 1.125rem;
+    // align-items: center;
 
     &-person {
       width: 100%;
@@ -129,5 +154,13 @@
       line-height: 1.5rem;
     }
   }
+}
+
+.chiled-one {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1.25rem;
+  margin-top: .625rem;
 }
 </style>
