@@ -24,7 +24,7 @@ const person = usePersonStore()
           class="children__info"
           v-for="chiled in person.children"
         >
-          {{ chiled.name }}
+          {{ chiled.name }} {{ chiled.age }}
         </div>
       </div>
     </main>

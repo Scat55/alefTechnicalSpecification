@@ -1,38 +1,40 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onUpdated } from 'vue'
 import { usePersonStore } from '../stores/personStore';
 import { useRouter } from 'vue-router';
 
 
 const chiled = usePersonStore()
 
-const personName = ref('');
+const personName = ref('')
 const personAge = ref(null);
 
-const chiledName = ref('');
-const chiledAge = ref(null);
+
+const count = ref(0);
 
 const router = useRouter();
 
 const addedChildren = () => {
+  count.value++
   chiled.children.push({ name: '', age: null })
+  console.log(chiled.children)
+
 }
 
 const removeChiled = () => {
+  count.value--
   chiled.children.pop({})
 }
 
 const handler = () => {
-  chiled.personName = personName.value
-  chiled.personAge = personAge.value
+  chiled.personName = personName
+  chiled.personAge = personAge
 
-  chiled.children.name = chiledName.value
-  chiled.children.age = chiledAge.value
 
-  console.log(chiled.children[0].name)
 
-  // router.push('/preview')
+  router.push('/preview')
 }
+
 </script>
 
 <template>
@@ -75,7 +77,7 @@ const handler = () => {
             class="childrenForm__btn"
             type="button"
             @click="addedChildren()"
-            v-if="chiled.children.length !== 5"
+            v-if="count !== 5"
           >
             <img
               src="../assets/images/plus.svg"
@@ -86,22 +88,24 @@ const handler = () => {
         </div>
         <div
           class="chiled-one"
-          v-for="chiled in chiled.children"
+          v-for="chil in  chiled.children "
         >
           <div class="childrenForm__form-person name">
             <span class="childrenForm__form-label">Имя</span>
             <input
               type="text"
               class="childrenForm__form-input"
-              v-model="chiledName"
+              v-model="chil.name"
             >
           </div>
-          <div class="childrenForm__form-person age">
+          <div class="
+              childrenForm__form-person
+              age">
             <span class="childrenForm__form-label">Возраст</span>
             <input
               type="text"
               class="childrenForm__form-input"
-              v-model="chiledAge"
+              v-model="chil.age"
             >
           </div>
           <span

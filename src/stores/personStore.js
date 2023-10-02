@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 export const usePersonStore = defineStore('person', () => {
   const personName = '';
   const personAge = null;
+
   const children = ref([]);
 
   return {
