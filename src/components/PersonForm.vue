@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onUpdated } from 'vue'
+import { ref } from 'vue'
 import { usePersonStore } from '../stores/personStore';
 import { useRouter } from 'vue-router';
 
@@ -29,8 +29,6 @@ const removeChiled = () => {
 const handler = () => {
   chiled.personName = personName
   chiled.personAge = personAge
-
-
 
   router.push('/preview')
 }

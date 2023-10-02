@@ -24,7 +24,7 @@ const person = usePersonStore()
           class="children__info"
           v-for="chiled in person.children"
         >
-          {{ chiled.name }} {{ chiled.age }}
+          <p>{{ chiled.name }}, {{ chiled.age }}</p>
         </div>
       </div>
     </main>
@@ -38,6 +38,8 @@ const person = usePersonStore()
 
 
 <style lang="scss" scoped>
+@import '../assets/styles/styles.scss';
+
 .page {
   display: flex;
   flex-direction: column;
@@ -78,6 +80,19 @@ main {
   &__title {
     display: block;
     margin-top: 3.75rem;
+  }
+
+  &__info {
+
+    p {
+      display: inline-block;
+      font-weight: bold;
+      margin-top: 1.25rem;
+      padding: .625rem 1.25rem;
+      border-radius: .3125rem;
+      background-color: #f1f1f1;
+      // width: 8.9375rem;
+    }
   }
 }
 </style>
